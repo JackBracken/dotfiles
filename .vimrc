@@ -72,7 +72,7 @@ vnoremap <tab> %
 set wrap
 set textwidth=100
 set formatoptions=qrn1
-set colorcolumn=120
+set colorcolumn=80
 
 nnoremap j gj
 nnoremap k gk
