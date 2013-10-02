@@ -1,0 +1,142 @@
+# Based off of AkaCrabby's i3 config. https://github.com/AkaCrabby/Laptop
+
+# Mod key (alt key)
+set $mod Mod1
+
+# Font
+font -xos4-terminus-medium-r-normal-*-12-120-72-72-c-60-iso10646-1
+
+# Autostart
+exec --no-startup-id nitrogen --restore
+# Default workspace doesn't work with names instead of numbers so "set" it with this
+exec --no-startup-id i3-msg "workspace Eins"
+
+# Start terminal
+bindsym $mod+Return exec xterm
+
+# Start dmenu
+bindsym $mod+d exec dmenu_run
+
+# Workspace names
+workspace "Eins" output xinerama-0
+workspace "Zwei" output xinerama-0
+workspace "Drei" output xinerama-0
+workspace "Vier" output xinerama-0
+workspace "Fuenf" output xinerama-0
+workspace "Sechs" output xinerama-0
+workspace "Sieben" output xinerama-0
+workspace "Acht" output xinerama-0
+workspace "Neun" output xinerama-0
+workspace "Zehn" output xinerama-0
+
+# Window colors
+client.focused #1f1f1f #1f1f1f #a2c1de #000000
+client.focused_inactive #1f1f1f #1f1f1f #677b81 #cc9797
+client.unfocused #1f1f1f #1f1f1f #677b8a #cc9797
+client.urgent #1f1f1f #1f1f1f #677b8a #cc9797
+
+# Window pixels
+new_window 1pixel
+new_float 1pixel
+
+# Float special windows
+for_window [class="XFontsel"] floating enable
+for_window [class="Nitrogen"] floating enable
+
+# Switch workspces
+bindsym $mod+1 workspace Eins
+bindsym $mod+2 workspace Zwei
+bindsym $mod+3 workspace Drei
+bindsym $mod+4 workspace Vier
+bindsym $mod+5 workspace Fuenf
+bindsym $mod+6 workspace Sechs
+bindsym $mod+7 workspace Sieben
+bindsym $mod+8 workspace Acht
+bindsym $mod+9 workspace Neun
+bindsym $mod+0 workspace Zehn
+
+# Change focused window
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+
+# Change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# Change parent container
+bindsym $mod+a focus parent
+
+# Move focused containers
+bindsym $mod+Shift+exclam move container to workspace Eins
+bindsym $mod+Shift+at move container to workspace Zwei
+bindsym $mod+Shift+numbersign move container to workspace Drei
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Floating modifier for mouse use
+floating_modifier $mod
+
+# Split orientation
+bindsym $mod+v split v
+bindsym $mod+h split h
+
+# Toggle fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle resize
+bindsym $mod+r mode "resize"
+floating_minimum_size 500 x 300
+
+# resize windows
+mode "resize" {
+    bindsym J resize shrink width 10px or 10 ppt
+    bindsym I resize shrink height 10px or 10 ppt
+    bindsym K resize grow height 10px or 10 ppt
+    bindsym L resize grow width 10px or 10 ppt
+
+    # exit resize mode
+    bindsym Escape mode "default"
+}
+
+# Reload, restart, ext
+bindsym $mod+Shift+C reload
+bindsym $mod+Shift+R restart
+bindsym $mod+Shift+E exit
+
+# i3bar settings
+bar {
+    status_command conky
+    position top
+    
+    colors {
+        background #111111
+        statusline #00cb62
+
+        focused_workspace #b31e04 #e42604 #111111
+        active_workspace #111111 #111111 #e42604
+        inactive_workspace #111111 #111111 #b31e04
+        urgent_workspace #111111 #111111 #3883da
+    }
+}
+
+# Set problem windows to floating
+## cb-exit script for crunchbang
+for_window [class="Cb-exit" instance="cb-exit"] floating enable 
