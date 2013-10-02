@@ -1,4 +1,3 @@
-call pathogen#infect()
 filetype off
 syntax on
 
@@ -72,7 +71,7 @@ vnoremap <tab> %
 set wrap
 set textwidth=100
 set formatoptions=qrn1
-set colorcolumn=80
+set colorcolumn=70
 
 nnoremap j gj
 nnoremap k gk
@@ -99,29 +98,5 @@ cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>
 cnoremap <C-f>  <Right>
 cnoremap <C-d>  <Delete>
-
-" Vundle stuff
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-Bundle 'Valloric/YouCompleteMe'
-
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-
-" non github repos
-Bundle 'git://git.wincent.com/command-t.git'
 
 filetype plugin indent on 
