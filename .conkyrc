@@ -1,0 +1,14 @@
+background no
+out_to_console yes
+out_to_x no
+update_interval 1
+total_run_times 0
+short_units yes
+pad_percents 2
+use_space left
+override_ut8_locale yes
+
+default_color #cc9797
+
+TEXT
+Battery remaining: ${execi 60 acpi -b | awk '{FS=","};{print $4}'} ${TIME %A %d %b} ${time %I:%M%P}
