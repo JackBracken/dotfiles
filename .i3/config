@@ -55,6 +55,18 @@ bindsym $mod+8 workspace Acht
 bindsym $mod+9 workspace Neun
 bindsym $mod+0 workspace Zehn
 
+# Move window to worksipace
+bindsym $mod+Shift+1 move container to workspace Eins
+bindsym $mod+Shift+2 move container to workspace Zwei
+bindsym $mod+Shift+3 move container to workspace Drei
+bindsym $mod+Shift+4 move container to workspace Vier
+bindsym $mod+Shift+5 move container to workspace Fuenf
+bindsym $mod+Shift+6 move container to workspace Sechs
+bindsym $mod+Shift+7 move container to workspace Sieben
+bindsym $mod+Shift+8 move container to workspace Acht
+bindsym $mod+Shift+9 move container to workspace Neun
+bindsym $mod+Shift+0 move container to workspace Zehn
+
 # Change focused window
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
