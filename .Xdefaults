@@ -1,0 +1,49 @@
+! xterm -----------------------------------------------------------------------
+
+! XTerm*font:-xos4-terminus-medium-r-normal-*-12-120-72-72-c-60-iso10646-1
+
+*customization: -color
+XTerm*termName: xterm-256color
+
+XTerm*faceName: xft:Terminus:size=12
+
+XTerm*foreground: #f0f0f0
+XTerm*background: #111111
+
+XTerm*cursorColor: #bababa
+
+!black
+XTerm*color0: #444444
+XTerm*color8: #444444
+
+!red
+XTerm*color1: #e42604
+XTerm*color9: #e42604
+
+!green
+XTerm*color2: #00cb62
+XTerm*color10: #00cb62
+
+!brown/yellow
+XTerm*color3: #dabc02
+XTerm*coror11: #dabc02
+
+!blue
+XTerm*color4: #3883da
+XTerm*color12: #3883da
+
+!magenta
+XTerm*color5: #d902d9
+XTerm*color13: #d902d9
+
+!cyan
+XTerm*color6: #38c6d9
+XTerm*color14: #38c6d9
+
+!white
+XTerm*color7: #f0f0f0
+XTerm*color15: #f0f0f0
+
+XTerm*borderWidth: 0
+
+XTerm*boldMode: false
