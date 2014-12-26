@@ -1,5 +1,10 @@
-filetype off
-syntax on
+execute pathogen#infect()
+syntax enable
+filetype plugin indent on
+
+" color scheme
+set background=dark
+colorscheme solarized
 
 " turn off vi compatability mode
 set nocompatible
@@ -98,5 +103,3 @@ cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>
 cnoremap <C-f>  <Right>
 cnoremap <C-d>  <Delete>
-
-filetype plugin indent on 
