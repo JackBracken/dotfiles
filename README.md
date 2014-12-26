@@ -1,3 +1,3 @@
 # My dotfiles
 
-A collection of my dotfiles that'll be updated as I'm assed.
+Various dotfiles that I think may be handy to hang on to. Updated infrequently. 
