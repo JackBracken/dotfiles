@@ -1,0 +1,26 @@
+[apply]
+    whitespace = fix
+[core]
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
+    trustctime = false
+    editor = vim
+    precomposedunicode = false
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+[user]
+    name = Jack Bracken
+    email = contact@jacktrick.com
+[diff]
+    # Detect copies as well as renames
+    renames = copies
+[diff "bin"]
+    # Use `hexdump` to diff binary files
+    textconv = hexdump -v -C
+[help]
+    autocorrect = 1
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+[push]
+    default = matching
+    followTags = true

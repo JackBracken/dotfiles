@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+# Create a new directory and enter it
+function md() {
+    mkdir -p "$0" && $(cd "$0" || exit)
+}
+
+# Find shortcut
+function f() {
+    find . -name "$1"
+}
+
+# Take current repo and copy it somewhere else minus .git metadata
+function gitexport() {
+    mkdir -p "$1"
+    git archive master | tar -x -C "$1"
+}
+
+# Get gzipped size
+function gz() {
+    echo "orig size    (bytes): "
+    cat "$1" | wc -c
+    echo "gzipped size (bytes): "
+    gzip -c "$1" | wc -c
+}
+
+# All dig info
+function digga() {
+    dig +nocmd "$1" any +multiline +noall +answer
+}
+
+# cd into foremost finder window
+function cdf() {
+    cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
+}
+
+function vagrant_reset() {
+    vagrant destroy
+    rm Berksfile.lock
+    vagrant up
+}
+
+function vagrant_update_boxes() {
+    vagrant box list | awk '{print $1 $2}' | sed -e 's/(/ --provider /g' -e 's/,//g' | xargs -I {} sh -c 'vagrant box update --box {}'
+}
+
+function vagrant_nuke() {
+    vagrant destroy -f
+    rm Berksfile.lock
+    rm -rf .vagrant/
+    rm -rf "$HOME/.berkshelf/cookbooks"
+    rm -rf "$HOME/.berkshelf/.cache"
+}
+
+# Extract archives - use: extract <file>
+# Based on http://dotfiles.org/~pseup/.bashrc
+function extract() {
+    if [ -f "$1" ] ; then
+        local filename=$(basename "$1")
+        local foldername="${filename%%.*}"
+        local fullpath=`perl -e 'use Cwd "abs_path";print abs_path(shift)' "$1"`
+        local didfolderexist=false
+        if [ -d "$foldername" ]; then
+            didfolderexist=true
+            read -p "$foldername already exists, do you want to overwrite it? (y/n) " -n 1
+            echo
+            if [[ $REPLY =~ ^[Nn]$ ]]; then
+                return
+            fi
+        fi
+        mkdir -p "$foldername" && cd "$foldername"
+        case $1 in
+            *.tar.bz2) tar xjf "$fullpath" ;;
+            *.tar.gz) tar xzf "$fullpath" ;;
+            *.tar.xz) tar Jxvf "$fullpath" ;;
+            *.tar.Z) tar xzf "$fullpath" ;;
+            *.tar) tar xf "$fullpath" ;;
+            *.taz) tar xzf "$fullpath" ;;
+            *.tb2) tar xjf "$fullpath" ;;
+            *.tbz) tar xjf "$fullpath" ;;
+            *.tbz2) tar xjf "$fullpath" ;;
+            *.tgz) tar xzf "$fullpath" ;;
+            *.txz) tar Jxvf "$fullpath" ;;
+            *.zip) unzip "$fullpath" ;;
+            *) echo "'$1' cannot be extracted via extract()" && cd .. && ! $didfolderexist && rm -r "$foldername" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# Colorise man pages
+function man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}

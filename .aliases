@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Common core utils
+alias ls='ls --color=auto'
+alias l='ls -lhA --color=auto --ignore=".*.un~*"'
+
+alias grep='grep --color=auto'
+
+# System info
+alias ports='echo "Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)" && netstat -atp tcp | grep -i "listen"'
+alias meminfo='memfree'
+
+## Most memory consuming processes
+alias psmem='ps aux | sort -nr -k 4'
+alias psmem10='ps aux | sort -nr -k 4 | head -10'
+
+## Most CPU intensive processes
+alias pscpu='ps aux | sort -nr -k 3'
+alias pscpu10='ps aux | sort -nr -k 3 | head -10'
+
+# Git specific
+alias gs='git status'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gd='git diff'
+alias gco='git checkout'
+alias grm='git rm'
+alias gl='git pull'
+alias gp='git push'
+
+# Vagrant specific
+alias v='vagrant'
+alias vd='vagrant destroy'
+alias vu='vagrant up'
+alias vr='vagrant_reset'
+alias vp='vagrant provision'
+

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Home bin directory
+PATH="$HOME/bin:$PATH"
+
+# GNU Utils from Homebrew
+if [[ type brew > /dev/null ]]; then
+	PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+	PATH="$(brew --prefix gnu-tar)/libexec/gnubin:$PATH"
+fi
+
+export PATH

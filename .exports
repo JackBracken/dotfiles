@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+export EDITOR=vim
+
+# Don't use ipv6 for Java Stuff
+export _JAVA_OPTIONS=-Djava.net.preferIPv4Stack=true
+
+# VMWare Fusion as default Vagrant provider
+export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+
+# AWS
+export AWS_DEFAULT_REGION="eu-west-1"
+
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+# Digital Ocean
+export DIGITALOCEAN_TOKEN="FILL IN"
+
+# LS colorize
+export CLICOLOR=1
+LS_COLORS='di=0;34:ln=0;42;31:ex=0;32';
+export LS_COLORS
