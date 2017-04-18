@@ -2,6 +2,18 @@
 
 export EDITOR=vim
 
+# Avoid duplicates in history
+export HISTCONTROL=ignoredups:erasedups
+
+# Infinite history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+export HISTFILE=~/.bash_hist
+
+# Save and reload history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 # Don't use ipv6 for Java Stuff
 export _JAVA_OPTIONS=-Djava.net.preferIPv4Stack=true
 
