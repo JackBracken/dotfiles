@@ -6,6 +6,9 @@ alias l='ls -lhA --color=auto --ignore=".*.un~*"'
 
 alias grep='grep --color=auto'
 
+# Open vimwiki
+alias vimwiki='vim -c VimwikiIndex'
+
 # System info
 alias ports='echo "Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)" && netstat -atp tcp | grep -i "listen"'
 alias meminfo='memfree'
@@ -25,8 +28,7 @@ alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
 alias gco='git checkout'
-alias grm='git rm'
-alias gl='git pull'
+alias gl='git pull --prune'
 alias gp='git push'
 
 # Vagrant specific
@@ -36,3 +38,11 @@ alias vu='vagrant up'
 alias vr='vagrant_reset'
 alias vp='vagrant provision'
 
+# Use GNU cal (and start days on Monday)
+alias cal="gcal --starting-day=1 $1"
+
+# enter go workspace
+alias gop='cd ~/go/src/github.com/JackBracken'
+alias gocov='go test -coverprofile=coverage.out && go tool cover -html=coverage.out'
+
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
